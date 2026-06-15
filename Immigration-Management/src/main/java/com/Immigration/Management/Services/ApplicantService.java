@@ -51,4 +51,11 @@ public class ApplicantService {
         applicantToAdd.setEmail(applicant.getEmail());
         return applicantRepository.save(applicantToAdd);
     }
+
+    public Applicant flagCriminalRecord(Long applicantId){
+        Applicant applicant = new Applicant();
+        applicantRepository.findById(applicantId);
+        applicant.setCriminalRecord(true);
+        return applicant;
+    }
 }
