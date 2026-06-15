@@ -1,10 +1,12 @@
 package com.Immigration.Management.Entities;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.util.List;
 
 @Entity
+@Data
 public class Applicant extends Person{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
