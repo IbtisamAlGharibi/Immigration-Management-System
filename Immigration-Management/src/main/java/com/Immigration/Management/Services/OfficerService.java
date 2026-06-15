@@ -1,12 +1,20 @@
 package com.Immigration.Management.Services;
 
+import com.Immigration.Management.Entities.ImmigrationCenter;
 import com.Immigration.Management.Entities.ImmigrationOfficer;
+import com.Immigration.Management.Repositories.CenterRepository;
 import com.Immigration.Management.Repositories.OfficerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class OfficerService {
+
+    CenterRepository centerRepository;
+    @Autowired
+    public OfficerService(CenterRepository centerRepository) {
+        this.centerRepository = centerRepository;
+    }
 
     OfficerRepository officerRepository;
     @Autowired
@@ -27,4 +35,16 @@ public class OfficerService {
         }
        return officerRepository.save(immigrationOfficer);
     }
+
+    public ImmigrationOfficer transferOfficer(Long officerId, Long newCenterId){
+        ImmigrationOfficer immigrationOfficer = officerRepository.getOfficerById(String.valueOf(officerId));
+        if (immigrationOfficer.isActive()){
+            ImmigrationCenter immigrationCenter = centerRepository.findById(String.valueOf(newCenterId));
+               immigrationCenter.setId(newCenterId);
+        }else {
+            throw new RuntimeException("Officer not exists");
+        }
+        return officerRepository.save(immigrationOfficer);
+    }
+
 }
