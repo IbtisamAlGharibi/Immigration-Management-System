@@ -1,9 +1,8 @@
 package com.Immigration.Management.Entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class Applicant extends Person{
@@ -15,5 +14,9 @@ public class Applicant extends Person{
     private String nationality;
     private boolean criminalRecord;
 
+    @OneToMany
+    List<VisaApplication> visaApplications;
+    @OneToMany
+    List<Interview> interviews;
 
 }
