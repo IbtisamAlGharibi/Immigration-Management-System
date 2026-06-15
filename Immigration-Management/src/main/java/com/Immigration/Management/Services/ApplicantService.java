@@ -1,6 +1,7 @@
 package com.Immigration.Management.Services;
 
 import com.Immigration.Management.Entities.Applicant;
+import com.Immigration.Management.Entities.Interview;
 import com.Immigration.Management.Repositories.ApplicantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -56,6 +57,10 @@ public class ApplicantService {
         Applicant applicant = new Applicant();
         applicantRepository.findById(applicantId);
         applicant.setCriminalRecord(true);
-        return applicant;
+
+        for (Interview interview : applicant.getInterviews()){
+            interview.setStatus("SCHEDULED");
+        }
+        return applicantRepository.save(applicant);
     }
 }
