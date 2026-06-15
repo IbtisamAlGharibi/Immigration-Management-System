@@ -23,5 +23,7 @@ public class ImmigrationOfficer extends Person{
 
     @OneToMany
     List<Interview> interviews;
+    @OneToMany
+    List<VisaApplication> visaApplications;
 
 }
