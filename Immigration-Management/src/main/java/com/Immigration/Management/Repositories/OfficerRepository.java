@@ -17,4 +17,7 @@ public interface OfficerRepository extends JpaRepository<ImmigrationOfficer,Long
 
     @Query("select o from ImmigrationOfficer o where o.badgeNumber=:badgeNumber ")
     ImmigrationOfficer getOfficerByBadgeNumber(@Param("badgeNumber") String badgeNumber);
+
+    @Query("select o from ImmigrationOfficer o where o.officerRank=:officerRank ")
+    ImmigrationOfficer FindOfficerByRank(@Param("officerRank") String officerRank);
 }
