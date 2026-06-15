@@ -47,4 +47,7 @@ public class OfficerService {
         return officerRepository.save(immigrationOfficer);
     }
 
+    public ImmigrationOfficer FindOfficerByRank(String rank){
+      return officerRepository.FindOfficerByRank(rank);
+    }
 }
