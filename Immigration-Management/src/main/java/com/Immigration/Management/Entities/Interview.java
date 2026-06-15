@@ -17,4 +17,7 @@ public class Interview {
     private String status;
     private String purpose;
 
+    @ManyToOne
+    private ImmigrationOfficer immigrationOfficer;
+
 }
