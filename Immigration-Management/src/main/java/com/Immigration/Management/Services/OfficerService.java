@@ -15,8 +15,10 @@ public class OfficerService {
     }
 
     public ImmigrationOfficer promoteOfficer(Long officerId, String newRank, int newClearanceLevel ){
-        ImmigrationOfficer immigrationOfficer = new ImmigrationOfficer();
-        officerRepository.getOfficerById(String.valueOf(officerId));
+        ImmigrationOfficer immigrationOfficer = officerRepository.getOfficerById(String.valueOf(officerId));
+        if (!(newClearanceLevel>1 & newClearanceLevel < 5)){
+            throw new RuntimeException("New Clearance Level must be between 1 to 5");
+        }
         if (immigrationOfficer.isActive()){
         immigrationOfficer.setOfficerRank(newRank);
         immigrationOfficer.setClearanceLevel(newClearanceLevel);
