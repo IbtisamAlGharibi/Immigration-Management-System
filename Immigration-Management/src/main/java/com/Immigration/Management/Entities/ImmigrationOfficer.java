@@ -1,12 +1,12 @@
 package com.Immigration.Management.Entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.apache.catalina.LifecycleState;
+
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -20,5 +20,8 @@ public class ImmigrationOfficer extends Person{
     private String rank;
     private int clearanceLevel;
     private boolean isActive;
+
+    @OneToMany
+    List<Interview> interviews;
 
 }
