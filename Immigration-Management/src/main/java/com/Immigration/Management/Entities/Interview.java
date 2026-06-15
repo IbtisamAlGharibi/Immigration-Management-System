@@ -19,5 +19,7 @@ public class Interview {
 
     @ManyToOne
     private ImmigrationOfficer immigrationOfficer;
+    @ManyToOne
+    private Applicant applicant;
 
 }
