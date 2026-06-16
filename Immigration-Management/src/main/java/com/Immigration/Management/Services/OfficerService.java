@@ -15,7 +15,7 @@ public class OfficerService {
     CenterRepository centerRepository;
     OfficerRepository officerRepository;
     @Autowired
-    public OfficerService(CenterRepository centerRepository) {
+    public OfficerService(CenterRepository centerRepository, OfficerRepository officerRepository) {
         this.centerRepository = centerRepository;
         this.officerRepository = officerRepository;
     }
