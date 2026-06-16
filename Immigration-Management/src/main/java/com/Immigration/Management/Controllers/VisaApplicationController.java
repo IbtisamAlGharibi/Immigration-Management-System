@@ -32,4 +32,9 @@ public class VisaApplicationController {
     public List<VisaApplication> getVisasByApplicant(@PathVariable Long applicantId) {
         return visaApplicationService.getVisasByApplicantId(applicantId);
     }
+
+    @GetMapping("/status/{status}")
+    public List<VisaApplication> getVisasByStatus(@PathVariable String status) {
+        return visaApplicationService.getVisasByStatus(status);
+    }
 }

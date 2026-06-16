@@ -25,6 +25,9 @@ public class VisaApplicationService {
     public List<VisaApplication> getVisasByApplicantId(Long applicantId) {
         return visaApplicationRepository.findByApplicantId(applicantId);
     }
+    public List<VisaApplication> getVisasByStatus(String status) {
+        return visaApplicationRepository.findByStatus(status);
+    }
 
     public VisaApplication SubmitApplication(Long applicantId, String visaType){
         List<Applicant> applicant = applicantRepository.findById(String.valueOf(applicantId));
