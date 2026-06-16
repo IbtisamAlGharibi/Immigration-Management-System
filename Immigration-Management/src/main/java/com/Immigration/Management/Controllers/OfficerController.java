@@ -30,4 +30,8 @@ public class OfficerController {
     public ImmigrationOfficer promoteOfficer(@PathVariable Long id, @RequestParam String newRank, @RequestParam int clearance) {
         return officerService.promoteOfficer(id, newRank, clearance);
     }
+    @PutMapping("/{id}/transfer/{centerId}")
+    public ImmigrationOfficer transferOfficer(@PathVariable Long id, @PathVariable Long centerId) {
+        return officerService.transferOfficer(id, centerId);
+    }
 }
