@@ -1,5 +1,6 @@
 package com.Immigration.Management.DTO;
 
+import com.Immigration.Management.Entities.ImmigrationOfficer;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,4 +19,20 @@ public class ImmigrationOfficerDTO {
     private String officerRank;
     private int clearanceLevel;
     private boolean active;
+
+    public static ImmigrationOfficerDTO convertToDTO(ImmigrationOfficer entity) {
+        ImmigrationOfficerDTO dto = new ImmigrationOfficerDTO();
+        dto.setOfficerId(entity.getId());
+        dto.setFirstName(entity.getFirstName());
+        dto.setLastName(entity.getLastName());
+        dto.setEmail(entity.getEmail());
+        dto.setPhoneNumber(entity.getPhoneNumber());
+        dto.setGender(entity.getGender());
+        dto.setBadgeNumber(entity.getBadgeNumber());
+        dto.setOfficerRank(entity.getOfficerRank());
+        dto.setClearanceLevel(entity.getClearanceLevel());
+        dto.setActive(entity.isActive());
+
+        return dto;
+    }
 }
