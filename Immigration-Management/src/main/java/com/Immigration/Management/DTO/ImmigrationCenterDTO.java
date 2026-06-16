@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -24,5 +27,14 @@ public class ImmigrationCenterDTO {
         dto.setType(entity.getType());
         dto.setDailyCapacity(entity.getDailyCapacity());
         return dto;
+    }
+
+    public static List<ImmigrationCenterDTO> convertToDTO(List<ImmigrationCenter> entities) {
+
+        List<ImmigrationCenterDTO> dtos = new ArrayList<>();
+        for (ImmigrationCenter entity : entities) {
+            dtos.add(convertToDTO(entity));
+        }
+        return dtos;
     }
 }
