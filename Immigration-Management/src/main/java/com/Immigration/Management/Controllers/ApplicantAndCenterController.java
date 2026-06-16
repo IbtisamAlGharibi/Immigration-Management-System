@@ -8,6 +8,8 @@ import com.Immigration.Management.Services.ApplicantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class ApplicantAndCenterController {
     ApplicantService applicantService;
@@ -34,5 +36,9 @@ public class ApplicantAndCenterController {
     @PostMapping("/addAsylum")
     public AsylumSeeker addAsylum(AsylumSeeker asylumSeeker){
         return (AsylumSeeker) applicantService.saveApplicant(asylumSeeker);
+    }
+    @GetMapping("/getAllApplicant")
+    public List<Applicant> getAllApplicant(){
+        return applicantService.getAllApplicant();
     }
 }

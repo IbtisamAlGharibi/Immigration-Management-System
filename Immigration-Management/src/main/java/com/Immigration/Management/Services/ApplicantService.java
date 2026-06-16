@@ -6,6 +6,8 @@ import com.Immigration.Management.Repositories.ApplicantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ApplicantService {
     ApplicantRepository applicantRepository;
@@ -13,6 +15,10 @@ public class ApplicantService {
     @Autowired
     public ApplicantService(ApplicantRepository applicantRepository) {
         this.applicantRepository = applicantRepository;
+    }
+     public List<Applicant> getAllApplicant() {
+        return applicantRepository.findAll();
+
     }
 
     public Applicant saveApplicant(String firstName, String lastName, String passportNumber, String nationality){
