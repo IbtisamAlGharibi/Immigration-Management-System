@@ -46,4 +46,8 @@ public class ApplicantAndCenterController {
     public List<Applicant> getApplicantsByNationality(@RequestParam String nationality) {
         return applicantService.getApplicantByNationality(nationality);
     }
+    @PutMapping("/{id}/flag")
+    public Applicant flagCriminalRecord(@PathVariable Long id) {
+        return applicantService.flagCriminalRecord(id);
+    }
 }
