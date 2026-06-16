@@ -24,7 +24,7 @@ public class VisaApplicationService {
 
     public VisaApplication SubmitApplication(Long applicantId, String visaType){
         List<Applicant> applicant = applicantRepository.findById(String.valueOf(applicantId));
-        VisaApplication visaApplication = new VisaApplication();
+        VisaApplication visaApplication = visaApplicationRepository.getVisaByType(visaType);
         if (applicant.getFirst().isCriminalRecord()){
            visaApplication.setStatus("REJECTED");
            throw new RuntimeException("Auto rejected due to criminal flag");

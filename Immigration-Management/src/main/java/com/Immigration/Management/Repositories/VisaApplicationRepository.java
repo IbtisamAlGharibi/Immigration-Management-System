@@ -8,4 +8,7 @@ import org.springframework.data.repository.query.Param;
 public interface VisaApplicationRepository extends JpaRepository<VisaApplication,Long> {
     @Query("select v from VisaApplication v where v.id=:id ")
     VisaApplication getVisaById(@Param("id") String id);
+
+    @Query("select v from VisaApplication v where v.visaType=:visaType ")
+    VisaApplication getVisaByType(@Param("visaType") String visaType);
 }
