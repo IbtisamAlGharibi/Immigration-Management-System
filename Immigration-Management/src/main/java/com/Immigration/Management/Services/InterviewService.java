@@ -17,7 +17,8 @@ public class InterviewService {
     ApplicantRepository applicantRepository;
     OfficerRepository officerRepository;
     @Autowired
-    public InterviewService(InterviewRepository interviewRepository) {
+    public InterviewService(InterviewRepository interviewRepository,ApplicantRepository applicantRepository,
+                            OfficerRepository officerRepository) {
         this.interviewRepository = interviewRepository;
         this.applicantRepository = applicantRepository;
         this.officerRepository = officerRepository;
