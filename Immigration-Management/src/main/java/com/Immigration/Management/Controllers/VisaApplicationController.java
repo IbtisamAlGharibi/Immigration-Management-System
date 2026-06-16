@@ -17,4 +17,8 @@ public class VisaApplicationController {
     public VisaApplication submitVisa(@PathVariable Long applicantId, @RequestParam("type") String visaType) {
         return visaApplicationService.SubmitApplication(applicantId, visaType);
     }
+    @PutMapping("/{visaId}/assign/{officerId}")
+    public VisaApplication assignOfficer(@PathVariable Long visaId,@PathVariable Long officerId) {
+        return visaApplicationService.assignOfficer(visaId, officerId);
+    }
 }
