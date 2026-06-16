@@ -20,6 +20,9 @@ public class ApplicantService {
         return applicantRepository.findAll();
 
     }
+    public  List<Applicant> getApplicantByNationality(String nationality){
+        return applicantRepository.findByNationality(nationality);
+    }
 
     public Applicant saveApplicant(String firstName, String lastName, String passportNumber, String nationality){
         if (passportNumber == null || passportNumber.isBlank()){

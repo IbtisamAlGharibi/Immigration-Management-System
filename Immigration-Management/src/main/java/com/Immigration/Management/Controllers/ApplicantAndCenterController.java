@@ -41,4 +41,9 @@ public class ApplicantAndCenterController {
     public List<Applicant> getAllApplicant(){
         return applicantService.getAllApplicant();
     }
+
+    @GetMapping("/search")
+    public List<Applicant> getApplicantsByNationality(@RequestParam String nationality) {
+        return applicantService.getApplicantByNationality(nationality);
+    }
 }
