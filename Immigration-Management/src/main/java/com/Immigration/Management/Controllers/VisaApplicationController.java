@@ -21,4 +21,9 @@ public class VisaApplicationController {
     public VisaApplication assignOfficer(@PathVariable Long visaId,@PathVariable Long officerId) {
         return visaApplicationService.assignOfficer(visaId, officerId);
     }
+    @PutMapping("/{visaId}/process")
+    public VisaApplication processVisa(@PathVariable Long visaId, @RequestParam String status,
+                                       @RequestParam String notes) {
+        return visaApplicationService.ProcessVisa(visaId, status, notes);
+    }
 }
