@@ -18,6 +18,9 @@ public class OfficerService {
         this.officerRepository = officerRepository;
     }
 
+    public ImmigrationOfficer saveOfficer(ImmigrationOfficer immigrationOfficer){
+        return officerRepository.save(immigrationOfficer);
+    }
     public ImmigrationOfficer promoteOfficer(Long officerId, String newRank, int newClearanceLevel ){
         ImmigrationOfficer immigrationOfficer = officerRepository.getOfficerById(String.valueOf(officerId));
         if (!(newClearanceLevel>1 & newClearanceLevel < 5)){
