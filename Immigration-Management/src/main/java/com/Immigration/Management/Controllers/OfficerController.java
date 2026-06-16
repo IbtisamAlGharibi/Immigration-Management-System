@@ -4,10 +4,7 @@ import com.Immigration.Management.Entities.BorderControlOfficer;
 import com.Immigration.Management.Entities.ImmigrationOfficer;
 import com.Immigration.Management.Services.OfficerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/officer")
@@ -24,5 +21,9 @@ public class OfficerController {
     @PostMapping("/borderOfficer")
     public BorderControlOfficer hireBorderOfficer(@RequestBody BorderControlOfficer borderOfficer) {
         return (BorderControlOfficer) officerService.saveOfficer(borderOfficer);
+    }
+    @GetMapping("/{id}")
+    public ImmigrationOfficer getOfficerById(@PathVariable Long id) {
+        return officerService.getOfficerById(String.valueOf(id));
     }
 }

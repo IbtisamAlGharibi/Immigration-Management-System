@@ -7,6 +7,8 @@ import com.Immigration.Management.Repositories.OfficerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class OfficerService {
 
@@ -20,6 +22,9 @@ public class OfficerService {
 
     public ImmigrationOfficer saveOfficer(ImmigrationOfficer immigrationOfficer){
         return officerRepository.save(immigrationOfficer);
+    }
+    public ImmigrationOfficer getOfficerById(String id){
+        return officerRepository.getOfficerById(id);
     }
     public ImmigrationOfficer promoteOfficer(Long officerId, String newRank, int newClearanceLevel ){
         ImmigrationOfficer immigrationOfficer = officerRepository.getOfficerById(String.valueOf(officerId));
