@@ -12,19 +12,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class InterviewService {
     InterviewRepository interviewRepository;
+    ApplicantRepository applicantRepository;
+    OfficerRepository officerRepository;
     @Autowired
     public InterviewService(InterviewRepository interviewRepository) {
         this.interviewRepository = interviewRepository;
-    }
-
-    ApplicantRepository applicantRepository;
-    @Autowired
-    public InterviewService(ApplicantRepository applicantRepository) {
         this.applicantRepository = applicantRepository;
-    }
-    OfficerRepository officerRepository;
-    @Autowired
-    public InterviewService(OfficerRepository officerRepository) {
         this.officerRepository = officerRepository;
     }
 

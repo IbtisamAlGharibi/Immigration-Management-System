@@ -14,19 +14,12 @@ import java.util.List;
 @Service
 public class VisaApplicationService {
     VisaApplicationRepository visaApplicationRepository;
+    ApplicantRepository applicantRepository;
+    OfficerRepository officerRepository;
     @Autowired
     public VisaApplicationService(VisaApplicationRepository visaApplicationRepository) {
         this.visaApplicationRepository = visaApplicationRepository;
-    }
-    ApplicantRepository applicantRepository;
-    @Autowired
-    public VisaApplicationService(ApplicantRepository applicantRepository) {
         this.applicantRepository = applicantRepository;
-    }
-
-    OfficerRepository officerRepository;
-    @Autowired
-    public VisaApplicationService(OfficerRepository officerRepository) {
         this.officerRepository = officerRepository;
     }
 

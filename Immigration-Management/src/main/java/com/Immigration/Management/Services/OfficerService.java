@@ -11,14 +11,10 @@ import org.springframework.stereotype.Service;
 public class OfficerService {
 
     CenterRepository centerRepository;
+    OfficerRepository officerRepository;
     @Autowired
     public OfficerService(CenterRepository centerRepository) {
         this.centerRepository = centerRepository;
-    }
-
-    OfficerRepository officerRepository;
-    @Autowired
-    public OfficerService(OfficerRepository officerRepository) {
         this.officerRepository = officerRepository;
     }
 
