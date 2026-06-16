@@ -22,4 +22,8 @@ public class InterviewController {
     public Interview completeInterview(@PathVariable Long id) {
         return interviewService.completeInterview(id);
     }
+    @PutMapping("/{id}/cancel")
+    public Interview cancelInterview(@PathVariable Long id) {
+        return interviewService.cancelInterview(id);
+    }
 }

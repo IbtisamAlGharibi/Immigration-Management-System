@@ -42,4 +42,10 @@ public class InterviewService {
         interview.setStatus("COMPLETED");
         return interviewRepository.save(interview);
     }
+    public Interview cancelInterview(Long interviewId){
+        Interview interview = interviewRepository.findById(interviewId)
+                .orElseThrow(() -> new RuntimeException("Interview not found"));
+        interview.setStatus("CANCELED");
+        return interviewRepository.save(interview);
+    }
 }
