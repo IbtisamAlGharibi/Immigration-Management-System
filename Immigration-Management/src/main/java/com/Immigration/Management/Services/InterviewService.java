@@ -9,6 +9,8 @@ import com.Immigration.Management.Repositories.OfficerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class InterviewService {
     InterviewRepository interviewRepository;
@@ -21,6 +23,9 @@ public class InterviewService {
         this.officerRepository = officerRepository;
     }
 
+    public List<Interview> getOfficerSchedule(Long officerId, String date) {
+        return interviewRepository.FindByOfficerIdAndInterviewDate(officerId, date);
+    }
     public Interview scheduleInterview(Long applicantId, Long officerId, String Date){
         Interview interview = new Interview();
         Applicant applicant = applicantRepository.findById(applicantId)

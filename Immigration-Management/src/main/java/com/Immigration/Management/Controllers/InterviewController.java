@@ -5,6 +5,8 @@ import com.Immigration.Management.Services.InterviewService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/interview")
 public class InterviewController {
@@ -25,5 +27,9 @@ public class InterviewController {
     @PutMapping("/{id}/cancel")
     public Interview cancelInterview(@PathVariable Long id) {
         return interviewService.cancelInterview(id);
+    }
+    @GetMapping("/officer/{officerId}/date/{date}")
+    public List<Interview> getOfficerSchedule(@PathVariable Long officerId,@PathVariable String date) {
+        return interviewService.getOfficerSchedule(officerId, date);
     }
 }
