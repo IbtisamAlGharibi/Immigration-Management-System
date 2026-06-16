@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -30,5 +33,15 @@ public class InterviewDTO {
             dto.setOfficerId(entity.getImmigrationOfficer().getId());
         }
         return dto;
+    }
+
+
+    public static List<InterviewDTO> convertToDTO(List<Interview> entities) {
+
+        List<InterviewDTO> dtos = new ArrayList<>();
+        for (Interview entity : entities) {
+            dtos.add(convertToDTO(entity));
+        }
+        return dtos;
     }
 }
