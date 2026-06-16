@@ -1,10 +1,21 @@
 package com.Immigration.Management.Controllers;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.Immigration.Management.Entities.Interview;
+import com.Immigration.Management.Services.InterviewService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/interview")
 public class InterviewController {
+    InterviewService interviewService;
+    @Autowired
+    public InterviewController(InterviewService interviewService) {
+        this.interviewService = interviewService;
+    }
 
+    @PostMapping("/schedule/{applicantId}/{officerId}")
+    public Interview scheduleInterview(@PathVariable Long applicantId,@PathVariable Long officerId, @RequestParam String date) {
+        return interviewService.scheduleInterview(applicantId, officerId, date);
+    }
 }
