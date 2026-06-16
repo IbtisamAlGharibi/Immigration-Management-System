@@ -1,6 +1,7 @@
 package com.Immigration.Management.Controllers;
 
 import com.Immigration.Management.Entities.Applicant;
+import com.Immigration.Management.Entities.AsylumSeeker;
 import com.Immigration.Management.Entities.ImmigrationCenter;
 import com.Immigration.Management.Repositories.CenterRepository;
 import com.Immigration.Management.Services.ApplicantService;
@@ -29,5 +30,9 @@ public class ApplicantAndCenterController {
     @PostMapping("/registerApplicant")
     public Applicant registerApplicant(Applicant applicant){
        return applicantService.saveApplicant(applicant);
+    }
+    @PostMapping("/addAsylum")
+    public AsylumSeeker addAsylum(AsylumSeeker asylumSeeker){
+        return (AsylumSeeker) applicantService.saveApplicant(asylumSeeker);
     }
 }
