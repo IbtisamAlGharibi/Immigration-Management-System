@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -30,5 +33,13 @@ public class VisaApplicationDTO {
             dto.setOfficerId(entity.getImmigrationOfficer().getId());
         }
         return dto;
+    }
+    public static List<VisaApplicationDTO> convertToDTO(List<VisaApplication> entities) {
+
+        List<VisaApplicationDTO> dtos = new ArrayList<>();
+        for (VisaApplication entity : entities) {
+            dtos.add(convertToDTO(entity));
+        }
+        return dtos;
     }
 }
