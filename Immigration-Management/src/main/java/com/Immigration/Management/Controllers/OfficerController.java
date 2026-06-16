@@ -26,4 +26,8 @@ public class OfficerController {
     public ImmigrationOfficer getOfficerById(@PathVariable Long id) {
         return officerService.getOfficerById(String.valueOf(id));
     }
+    @PutMapping("/{id}/promote")
+    public ImmigrationOfficer promoteOfficer(@PathVariable Long id, @RequestParam String newRank, @RequestParam int clearance) {
+        return officerService.promoteOfficer(id, newRank, clearance);
+    }
 }
