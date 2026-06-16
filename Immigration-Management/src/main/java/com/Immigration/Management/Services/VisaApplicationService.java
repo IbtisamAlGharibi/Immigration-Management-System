@@ -17,7 +17,8 @@ public class VisaApplicationService {
     ApplicantRepository applicantRepository;
     OfficerRepository officerRepository;
     @Autowired
-    public VisaApplicationService(VisaApplicationRepository visaApplicationRepository) {
+    public VisaApplicationService(VisaApplicationRepository visaApplicationRepository ,
+                                  ApplicantRepository applicantRepository, OfficerRepository officerRepository ) {
         this.visaApplicationRepository = visaApplicationRepository;
         this.applicantRepository = applicantRepository;
         this.officerRepository = officerRepository;
