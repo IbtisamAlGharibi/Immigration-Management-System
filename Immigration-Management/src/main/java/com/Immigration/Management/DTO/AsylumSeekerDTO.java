@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -39,4 +42,11 @@ public static AsylumSeekerDTO convertToDTO(AsylumSeeker entity) {
 
     return dto;
 }
+    public static List<AsylumSeekerDTO> convertToDTO(List<AsylumSeeker> entities) {
+        List<AsylumSeekerDTO> dtos = new ArrayList<>();
+        for (AsylumSeeker entity : entities) {
+            dtos.add(convertToDTO(entity));
+        }
+        return dtos;
+    }
 }
