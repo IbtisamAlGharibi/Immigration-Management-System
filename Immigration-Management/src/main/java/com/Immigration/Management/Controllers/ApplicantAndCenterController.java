@@ -16,7 +16,7 @@ public class ApplicantAndCenterController {
     ApplicantService applicantService;
     CenterRepository centerRepository;
     @Autowired
-    public ApplicantAndCenterController(ApplicantService applicantService) {
+    public ApplicantAndCenterController(ApplicantService applicantService,CenterRepository centerRepository) {
         this.applicantService = applicantService;
         this.centerRepository = centerRepository;
     }
@@ -31,11 +31,11 @@ public class ApplicantAndCenterController {
     }
 
     @PostMapping("/registerApplicant")
-    public Applicant registerApplicant(Applicant applicant){
+    public Applicant registerApplicant(@RequestBody Applicant applicant){
        return applicantService.saveApplicant(applicant);
     }
     @PostMapping("/addAsylum")
-    public AsylumSeeker addAsylum(AsylumSeeker asylumSeeker){
+    public AsylumSeeker addAsylum(@RequestBody AsylumSeeker asylumSeeker){
         return (AsylumSeeker) applicantService.saveApplicant(asylumSeeker);
     }
     @GetMapping("/getAllApplicant")
