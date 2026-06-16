@@ -18,4 +18,8 @@ public class InterviewController {
     public Interview scheduleInterview(@PathVariable Long applicantId,@PathVariable Long officerId, @RequestParam String date) {
         return interviewService.scheduleInterview(applicantId, officerId, date);
     }
+    @PutMapping("/{id}/complete")
+    public Interview completeInterview(@PathVariable Long id) {
+        return interviewService.completeInterview(id);
+    }
 }
