@@ -1,5 +1,6 @@
 package com.Immigration.Management.Controllers;
 
+import com.Immigration.Management.Entities.BorderControlOfficer;
 import com.Immigration.Management.Entities.ImmigrationOfficer;
 import com.Immigration.Management.Services.OfficerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,5 +20,9 @@ public class OfficerController {
     @PostMapping
     public ImmigrationOfficer hireOfficer(@RequestBody ImmigrationOfficer officer) {
         return officerService.saveOfficer(officer);
+    }
+    @PostMapping("/borderOfficer")
+    public BorderControlOfficer hireBorderOfficer(@RequestBody BorderControlOfficer borderOfficer) {
+        return (BorderControlOfficer) officerService.saveOfficer(borderOfficer);
     }
 }
