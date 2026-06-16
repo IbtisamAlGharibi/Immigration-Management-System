@@ -22,6 +22,9 @@ public class VisaApplicationService {
         this.applicantRepository = applicantRepository;
         this.officerRepository = officerRepository;
     }
+    public List<VisaApplication> getVisasByApplicantId(Long applicantId) {
+        return visaApplicationRepository.findByApplicantId(applicantId);
+    }
 
     public VisaApplication SubmitApplication(Long applicantId, String visaType){
         List<Applicant> applicant = applicantRepository.findById(String.valueOf(applicantId));

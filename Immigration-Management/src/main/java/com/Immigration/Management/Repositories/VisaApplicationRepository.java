@@ -5,7 +5,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.util.List;
+
 public interface VisaApplicationRepository extends JpaRepository<VisaApplication,Long> {
+    List<VisaApplication> findByApplicantId(Long applicantId);
     @Query("select v from VisaApplication v where v.id=:id ")
     VisaApplication getVisaById(@Param("id") String id);
 

@@ -5,6 +5,8 @@ import com.Immigration.Management.Services.VisaApplicationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/visaApplication")
 public class VisaApplicationController {
@@ -25,5 +27,9 @@ public class VisaApplicationController {
     public VisaApplication processVisa(@PathVariable Long visaId, @RequestParam String status,
                                        @RequestParam String notes) {
         return visaApplicationService.ProcessVisa(visaId, status, notes);
+    }
+    @GetMapping("/applicant/{applicantId}")
+    public List<VisaApplication> getVisasByApplicant(@PathVariable Long applicantId) {
+        return visaApplicationService.getVisasByApplicantId(applicantId);
     }
 }
