@@ -1,11 +1,15 @@
 package com.Immigration.Management.Controllers;
 
+import com.Immigration.Management.DTO.ApplicantDTO;
+import com.Immigration.Management.DTO.AsylumSeekerDTO;
+import com.Immigration.Management.DTO.ImmigrationCenterDTO;
 import com.Immigration.Management.Entities.Applicant;
 import com.Immigration.Management.Entities.AsylumSeeker;
 import com.Immigration.Management.Entities.ImmigrationCenter;
 import com.Immigration.Management.Repositories.CenterRepository;
 import com.Immigration.Management.Services.ApplicantService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,33 +26,33 @@ public class ApplicantAndCenterController {
     }
 
     @PostMapping("/addCenter")
-    public ImmigrationCenter createCenter(@RequestBody ImmigrationCenter immigrationCenter){
-        return centerRepository.save(immigrationCenter);
+    public ResponseEntity<ImmigrationCenterDTO> createCenter(@RequestBody ImmigrationCenter immigrationCenter){
+        return ResponseEntity.ok( ImmigrationCenterDTO.convertToDTO(centerRepository.save(immigrationCenter)));
     }
     @GetMapping("/{id}")
-    public ImmigrationCenter getCenter(@PathVariable Long id){
-        return centerRepository.getReferenceById(id);
+    public ResponseEntity<ImmigrationCenterDTO> getCenter(@PathVariable Long id){
+        return ResponseEntity.ok(ImmigrationCenterDTO.convertToDTO(centerRepository.getReferenceById(id)));
     }
 
     @PostMapping("/registerApplicant")
-    public Applicant registerApplicant(@RequestBody Applicant applicant){
-       return applicantService.saveApplicant(applicant);
+    public ResponseEntity<ApplicantDTO> registerApplicant(@RequestBody Applicant applicant){
+       return ResponseEntity.ok(ApplicantDTO.convertToDTO(applicantService.saveApplicant(applicant)));
     }
     @PostMapping("/addAsylum")
-    public AsylumSeeker addAsylum(@RequestBody AsylumSeeker asylumSeeker){
-        return (AsylumSeeker) applicantService.saveApplicant(asylumSeeker);
+    public ResponseEntity<AsylumSeekerDTO> addAsylum(@RequestBody AsylumSeeker asylumSeeker){
+        return ResponseEntity.ok (AsylumSeekerDTO.convertToDTO((AsylumSeeker) applicantService.saveApplicant(asylumSeeker)));
     }
     @GetMapping("/getAllApplicant")
-    public List<Applicant> getAllApplicant(){
-        return applicantService.getAllApplicant();
+    public ResponseEntity<List<ApplicantDTO>> getAllApplicant(){
+        return ResponseEntity.ok(ApplicantDTO.convertToDTO(applicantService.getAllApplicant()));
     }
 
     @GetMapping("/search")
-    public List<Applicant> getApplicantsByNationality(@RequestParam String nationality) {
-        return applicantService.getApplicantByNationality(nationality);
+    public ResponseEntity <List<ApplicantDTO>> getApplicantsByNationality(@RequestParam String nationality) {
+        return ResponseEntity.ok(ApplicantDTO.convertToDTO(applicantService.getApplicantByNationality(nationality)));
     }
     @PutMapping("/{id}/flag")
-    public Applicant flagCriminalRecord(@PathVariable Long id) {
-        return applicantService.flagCriminalRecord(id);
+    public ResponseEntity<ApplicantDTO> flagCriminalRecord(@PathVariable Long id) {
+        return ResponseEntity.ok(ApplicantDTO.convertToDTO(applicantService.flagCriminalRecord(id)));
     }
 }
