@@ -1,8 +1,10 @@
 package com.Immigration.Management.Controllers;
 
+import com.Immigration.Management.DTO.InterviewDTO;
 import com.Immigration.Management.Entities.Interview;
 import com.Immigration.Management.Services.InterviewService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,19 +19,20 @@ public class InterviewController {
     }
 
     @PostMapping("/schedule/{applicantId}/{officerId}")
-    public Interview scheduleInterview(@PathVariable Long applicantId,@PathVariable Long officerId, @RequestParam String date) {
-        return interviewService.scheduleInterview(applicantId, officerId, date);
+    public ResponseEntity<InterviewDTO> scheduleInterview(@PathVariable Long applicantId, @PathVariable Long officerId, @RequestParam String date) {
+        return ResponseEntity.ok(InterviewDTO.convertToDTO(interviewService.scheduleInterview(applicantId, officerId, date)));
     }
     @PutMapping("/{id}/complete")
-    public Interview completeInterview(@PathVariable Long id) {
-        return interviewService.completeInterview(id);
+    public ResponseEntity<InterviewDTO> completeInterview(@PathVariable Long id) {
+        return ResponseEntity.ok(InterviewDTO.convertToDTO(interviewService.completeInterview(id)));
     }
     @PutMapping("/{id}/cancel")
-    public Interview cancelInterview(@PathVariable Long id) {
-        return interviewService.cancelInterview(id);
+    public ResponseEntity<InterviewDTO> cancelInterview(@PathVariable Long id) {
+        return ResponseEntity.ok(InterviewDTO.convertToDTO(interviewService.cancelInterview(id)));
     }
+
     @GetMapping("/officer/{officerId}/date/{date}")
-    public List<Interview> getOfficerSchedule(@PathVariable Long officerId,@PathVariable String date) {
-        return interviewService.getOfficerSchedule(officerId, date);
+    public ResponseEntity<List<InterviewDTO>> getOfficerSchedule(@PathVariable Long officerId,@PathVariable String date) {
+        return ResponseEntity.ok(InterviewDTO.convertToDTO(interviewService.getOfficerSchedule(officerId, date)));
     }
 }
